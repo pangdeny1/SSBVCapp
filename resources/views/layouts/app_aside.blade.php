@@ -48,8 +48,12 @@
 
                     <hr>
 
-<<<<<<< HEAD
                     <div class="menu-header">Issuance</div>
+
+                     <a href="{{url('import') }}" class="menu-link mb-2">
+                        <i class="fas fa-user-friends text-muted mr-2"></i>
+                        <span class="menu-text">Import</span>
+                    </a>
                     <a href="" class="menu-link mb-2">
                         <i class="fas fa-user-friends text-muted mr-2"></i>
                         <span class="menu-text">Browse a list</span>
@@ -80,10 +84,9 @@
 
                     <hr>
 
-=======
                    
                 </nav>
->>>>>>> 6db745dd287a340ccda055ae9bfcad2594d547b9
+
             </nav>
         </section>
     </div>

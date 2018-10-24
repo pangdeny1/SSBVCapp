@@ -13,6 +13,10 @@ Route::get('dashboard', [
     "uses" => "HomeController@index"
 ]);
 
+Route::get('/import', 'ImportController@getImport')->name('import');
+Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
+Route::post('/import_process', 'ImportController@processImport')->name('import_process');
+
 Route::post("clusters/{batch}/members",   [
     "as"    => "clusters.members.store",
     "uses"  => "ClusterMembersController@store"

@@ -29,6 +29,7 @@
     <!-- BEGIN THEME STYLES -->
     <link rel="stylesheet" href="{{ asset("themes/looper/assets/stylesheets/main.min.css") }}">
     <link rel="stylesheet" href="{{ asset("themes/looper/assets/stylesheets/custom.css") }}">
+    
 </head>
 <body>
 <!-- .app -->
@@ -67,6 +68,7 @@
 <!-- BEGIN PAGE LEVEL JS -->
 <script src="{{ asset("themes/looper/assets/javascript/pages/easypiechart-demo.js") }}"></script>
 <script src="{{ asset("themes/looper/assets/javascript/pages/dashboard-demo.js") }}"></script>
+ <script src="{{ asset('js/app.js') }}"></script>
 
 
 

@@ -213,4 +213,10 @@ return [
         "Sms" => \App\Facades\SmsFacade::class,
     ],
 
+   'db_fields' => [
+        'first_name',
+        'last_name',
+        'email'
+    ]
+
 ];

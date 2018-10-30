@@ -34,7 +34,7 @@ class ImportController extends Controller
                     $csv_header_fields[] = $key;
                 }
             }
-            $csv_data = array_slice($data, 0, 2);
+            $csv_data = array_slice($data, 0, count($data));
 
             $csv_data_file = CsvData::create([
                 'csv_filename' => $request->file('csv_file')->getClientOriginalName(),

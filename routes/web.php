@@ -17,6 +17,11 @@ Route::get('/import', 'ImportController@getImport')->name('import');
 Route::post('/import_parse', 'ImportController@parseImport')->name('import_parse');
 Route::post('/import_process', 'ImportController@processImport')->name('import_process');
 
+Route::get('/imports', 'SmsImportController@index')->name('imports');
+Route::get('/importsms', 'SmsImportController@getimport')->name('importsms');
+Route::post('/importsms_parse', 'SmsImportController@parseImport')->name('importsms_parse');
+Route::post('/importsms_process', 'SmsImportController@processImport')->name('importsms_process');
+
 Route::post("clusters/{batch}/members",   [
     "as"    => "clusters.members.store",
     "uses"  => "ClusterMembersController@store"

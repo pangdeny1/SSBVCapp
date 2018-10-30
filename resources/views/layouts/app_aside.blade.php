@@ -48,13 +48,13 @@
 
                     <hr>
 
-                    <div class="menu-header">Issuance</div>
+                    <div class="menu-header">Bulk Issuance</div>
 
-                     <a href="{{url('import') }}" class="menu-link mb-2">
+                     <a href="{{url('importsms') }}" class="menu-link mb-2">
                         <i class="fas fa-user-friends text-muted mr-2"></i>
                         <span class="menu-text">Import</span>
                     </a>
-                    <a href="" class="menu-link mb-2">
+                    <a href="{{url('imports') }}" class="menu-link mb-2">
                         <i class="fas fa-user-friends text-muted mr-2"></i>
                         <span class="menu-text">Browse a list</span>
                     </a>
@@ -69,7 +69,7 @@
                     <hr>
 
 
-                    <div class="menu-header">Redemptions</div>
+                    <div class="menu-header">Bulk Redemptions</div>
                     <a href="" class="menu-link mb-2">
                         <i class="fas fa-user-friends text-muted mr-2"></i>
                         <span class="menu-text">Browse a list</span>

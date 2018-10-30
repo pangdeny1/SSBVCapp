@@ -217,6 +217,13 @@ return [
         'first_name',
         'last_name',
         'email'
+    ],
+
+     'sms_fields' => [
+        'send_to',
+        'text',
+        'sender',
+        'batch_id'
     ]
 
 ];

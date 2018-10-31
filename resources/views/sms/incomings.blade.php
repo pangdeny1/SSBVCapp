@@ -18,21 +18,21 @@
                                 </a>
                             </li>
                             <li class="breadcrumb-item active">
-                                Imports
+                                Incomings
                             </li>
                         </ol>
                     </nav>
                     <div class="d-sm-flex align-items-sm-center">
                         <h1 class="page-title mr-sm-auto mb-0">
-                            Imports
+                            Incomings SMS
                         </h1>
                         <div class="btn-toolbar">
                             <a href="{{ route("users.export") }}" class="btn btn-light">
                                 <i class="far fa-file-excel"></i>
                                 <span class="ml-1">Export as excel</span>
                             </a>
-                            @can("create", \App\Importsm::class)
-                            <a href="{{ url("create_import")}}" class="btn btn-primary">
+                            @can("create", \App\Incoming::class)
+                            <a href="{{ route("users.create") }}" class="btn btn-primary">
                                 <span class="fas fa-plus mr-1"></span>
                                 New Sms
                             </a>
@@ -57,7 +57,7 @@
 
                         <div class="card-body">
 
-                            <div class="text-muted"> Showing {{ $imports->firstItem() }} to {{ $imports->lastItem() }} of {{ $imports->total() }} entries </div>
+                            <div class="text-muted"> Showing {{ $incomings->firstItem() }} to {{ $incomings->lastItem() }} of {{ $incomings->total() }} entries </div>
                             
                             <div class="table-responsive">
                                 <table class="table">
@@ -71,36 +71,36 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($imports as $import)
+                                    @foreach($incomings as $incoming)
                                         <tr>
                                             <td class="align-middle" nowrap>
                                                 <a href="">
-                                                    {{ $import->send_to}}
+                                                    {{ $incoming->send_to}}
                                                 </a>
                                             </td>
-                                            <td class="align-middle" nowrap>{{ $import->text }}</td>
-                                            <td class="align-middle" nowrap>{{ $import->sender }}</td>
+                                            <td class="align-middle" nowrap>{{ $incoming->text }}</td>
+                                            <td class="align-middle" nowrap>{{ $incoming->sender }}</td>
                                             <td class="align-middle text-capitalize" nowrap>
-                                             {{ $import->batch_id }}   
+                                             {{ $incoming->batch_id }}   
                                             </td>
                                             
                                             <td class="align-middle text-right" nowrap>
-                                                @can("edit", \App\Importsm::class)
-                                                <a href="{{ route("users.edit", $import) }}" class="btn btn-sm btn-secondary">
+                                                @can("edit", \App\Incoming::class)
+                                                <a href="{{ route("users.edit", $incoming) }}" class="btn btn-sm btn-secondary">
                                                     <i class="fa fa-pencil-alt"></i>
                                                     <span class="sr-only">Edit</span>
                                                 </a>
                                                 @endcan
 
-                                                @can("delete", \App\Importsm::class)
+                                                @can("delete", \App\Incoming::class)
                                                 <a href="javascript:void(0)"
                                                    class="btn btn-sm btn-secondary"
-                                                   onclick="event.preventDefault(); document.getElementById('deletion-form-{{$import->id}}').submit();"
+                                                   onclick="event.preventDefault(); document.getElementById('deletion-form-{{$incoming->id}}').submit();"
                                                 >
                                                     <i class="far fa-trash-alt"></i>
                                                     <span class="sr-only">Remove</span>
-                                                    <form id="deletion-form-{{$import->id}}"
-                                                          action="{{ route('users.destroy', $import) }}"
+                                                    <form id="deletion-form-{{$incoming->id}}"
+                                                          action="{{ route('users.destroy', $incoming) }}"
                                                           method="POST"
                                                           class="d-none"
                                                     >
@@ -117,7 +117,7 @@
                             </div>
 
                             <!-- .pagination -->
-                            {{ $imports->links() }}
+                            {{ $incomings->links() }}
                         </div>
                     </section>
                 </div>

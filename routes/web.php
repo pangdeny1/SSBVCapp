@@ -22,6 +22,19 @@ Route::get('/importsms', 'SmsImportController@getimport')->name('importsms');
 Route::post('/importsms_parse', 'SmsImportController@parseImport')->name('importsms_parse');
 Route::post('/importsms_process', 'SmsImportController@processImport')->name('importsms_process');
 
+Route::get('/incomings', 'SmsImportController@incoming')->name('incomings');
+Route::get('/importsms', 'SmsImportController@getimport')->name('importsms');
+
+Route::get('/bulks', 'SmsImportController@bulk')->name('bulks');
+
+Route::get('/createbatch', 'SmsImportController@createbatch')->name('createbatch');
+
+Route::post('/storebatch', 'SmsImportController@storebatch')->name('storebatch');
+
+Route::get('/showbatch/{id}', 'SmsImportController@showBatch')->name('showbatch/{id}');
+Route::post('/generate/{id}', 'SmsImportController@generate')->name('generate/{id}');
+
+
 Route::post("clusters/{batch}/members",   [
     "as"    => "clusters.members.store",
     "uses"  => "ClusterMembersController@store"

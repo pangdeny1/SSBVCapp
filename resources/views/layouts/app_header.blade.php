@@ -2,7 +2,7 @@
     <div class="top-bar">
         <div class="top-bar-brand">
             <a href="{{ route("home") }}">
-                <img src="{{ asset("themes/looper/assets/images/brand-inverse.png") }}" height="32" alt="">
+                Bulk SMS v 2.1
             </a>
         </div>
         <div class="top-bar-list">
@@ -39,60 +39,22 @@
                                 <a href="#">Mark all as read</a>
                             </h6>
                             <div class="dropdown-scroll has-scrollable">
+                                 @foreach(\App\Incoming::latest()->take(5)->get() as $sms)
                                 <a href="#" class="dropdown-item unread">
                                     <div class="user-avatar">
                                         <img src="{{ asset("themes/looper/assets/images/avatars/team1.jpg") }}" alt="">
                                     </div>
                                     <div class="dropdown-item-body">
-                                        <p class="subject"> Stilearning </p>
-                                        <p class="text text-truncate"> Invitation: Joe's Dinner @ Fri Aug 22 </p>
-                                        <span class="date">2 hours ago</span>
+                                        <p class="subject">{{$sms->sender }} </p>
+                                        <p class="text text-truncate"> {{$sms->text}} </p>
+                                        <span class="date">{{ $sms->created_at->diffForHumans() }}</span>
                                     </div>
                                 </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="user-avatar">
-                                        <img src="{{ asset("themes/looper/assets/images/avatars/team3.png") }}" alt=""> </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Openlane </p>
-                                        <p class="text text-truncate"> Final reminder: Upgrade to Pro </p>
-                                        <span class="date">23 hours ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="tile tile-circle bg-green"> GZ </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Gogo Zoom </p>
-                                        <p class="text text-truncate"> Live healthy with this wireless sensor. </p>
-                                        <span class="date">1 day ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="tile tile-circle bg-teal"> GD </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Gold Dex </p>
-                                        <p class="text text-truncate"> Invitation: Design Review @ Mon Jul 7 </p>
-                                        <span class="date">1 day ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="user-avatar">
-                                        <img src="{{ asset("themes/looper/assets/images/avatars/team2.png") }}" alt=""> </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Creative Division </p>
-                                        <p class="text text-truncate"> Need some feedback on this please </p>
-                                        <span class="date">2 days ago</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="dropdown-item">
-                                    <div class="tile tile-circle bg-pink"> LD </div>
-                                    <div class="dropdown-item-body">
-                                        <p class="subject"> Lab Drill </p>
-                                        <p class="text text-truncate"> Our UX exercise is ready </p>
-                                        <span class="date">6 days ago</span>
-                                    </div>
-                                </a>
+                                @endforeach
+                               
+                               
                             </div>
-                            <a href="#" class="dropdown-footer">All messages
+                            <a href="{{url("incomings")}} " class="dropdown-footer">All messages
                                 <i class="fa fa-fw fa-long-arrow-alt-right"></i>
                             </a>
                         </div>

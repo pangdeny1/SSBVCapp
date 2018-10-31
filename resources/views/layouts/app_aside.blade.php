@@ -52,17 +52,27 @@
 
                      <a href="{{url('importsms') }}" class="menu-link mb-2">
                         <i class="fas fa-user-friends text-muted mr-2"></i>
-                        <span class="menu-text">Import</span>
+                        <span class="menu-text">Upload data</span>
                     </a>
                     <a href="{{url('imports') }}" class="menu-link mb-2">
                         <i class="fas fa-user-friends text-muted mr-2"></i>
-                        <span class="menu-text">Browse a list</span>
+                        <span class="menu-text">Browse imported</span>
                     </a>
 
                     
                     <a href="" class="menu-link mb-2">
                         <i class="fas fa-plus text-muted mr-2"></i>
                         <span class="menu-text">Register new</span>
+                    </a>
+
+                    <a href="{{url('incomings')}}" class="menu-link mb-2">
+                        <i class="fas fa-plus text-muted mr-2"></i>
+                        <span class="menu-text">Incomings SMS</span>
+                    </a>
+
+                     <a href="{{url('bulks')}}" class="menu-link mb-2">
+                        <i class="fas fa-plus text-muted mr-2"></i>
+                        <span class="menu-text">Send bulk</span>
                     </a>
                     
 

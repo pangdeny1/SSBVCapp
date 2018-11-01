@@ -26,6 +26,7 @@
                                         <td>{{ $value }}</td>
 
                                     @endforeach
+                                   
                                     </tr>
                                     
                                 @endforeach
@@ -39,7 +40,9 @@
                                                 @endforeach
                                             </select>
                                         </td>
+
                                     @endforeach
+
                                 </tr>
                             </table>
 

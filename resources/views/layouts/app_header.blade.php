@@ -74,6 +74,11 @@
                           
 
                             <div class="dropdown-divider"></div>
+                             @can("view", \App\Batch::class)
+                            <a href="{{ url('bulks') }}" class="dropdown-item ">
+                                <i class="fas fa-users"></i> Batches
+                            </a>
+                            @endcan
 
                             @can("view", \App\User::class)
                             <a href="{{ route("users.index") }}" class="dropdown-item ">

@@ -46,7 +46,7 @@
 
         <tr bgcolor="#F4F4F4"> 
           <td height="30" > 
-            <div align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b> Batch : {{$batch->number}}</b>
+            <div align="left"><font face="Verdana, Arial, Helvetica, sans-serif" size="-1"><b> Batch : {{$batch->number}} -({{\App\Importsm::where('batch_id',$batch->number)->count()}})</b>
               :</font></div>
           </td>
           </tr>
@@ -129,20 +129,20 @@
                                         <table id="customers2" class="table datatable">
                                             <thead>
                                                 <tr>
-                                                    <th width="50%">Sender ({{$batch->count()}})</th>
-                                                    <th width="20%">text</th>
-                                                    <th width="20%">send To</th>
-                                                    <th width="20%">Status</th>
+                                                    <th width="20%">Sender </th>
+                                                    <th width="40%">text</th>
+                                                    <th width="10%">send To</th>
+                                                    <th width="30%">batch Number</th>
                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                       @foreach(\App\Importsm::where('batch_id',$batch->number)->get() as $sms)
+                                       @foreach(\App\Importsm::where('batch_id',$batch->number)->where('status','tosend')->get() as $sms)
                                                 <tr>
                                                     <td><strong>{{$sms->sender}}</strong></td>
                                                     <td><strong>{{$sms->text}}</strong></td>
                                                     <td><strong>{{$sms->send_to}}</strong></td>
-                                                    <td><span class="label label-danger">Eligible</span></td>
+                                                    <td><span class="label label-danger">{{$sms->batch_id}}</span></td>
                                                     
                                                 </tr>
                                            @endforeach

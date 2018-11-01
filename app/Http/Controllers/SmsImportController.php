@@ -7,6 +7,7 @@ use App\Incoming;
 use App\CsvData;
 use App\Batch;
 use App\Send;
+use App\Outgoing;
 use DB;
 use App\Http\Requests\CsvImportRequest;
 use Illuminate\Http\Request;
@@ -14,6 +15,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class SmsImportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
     	
@@ -49,6 +54,38 @@ class SmsImportController extends Controller
         return view('sms.createbatch');
     }
 
+
+       public function sendsingle()
+    {
+        
+        
+        return view('sms.sendsingle');
+    }
+
+
+       public function storesingle(Request $request)
+    {
+       
+         $this->validate($request, [
+            'send_to'     => 'required',
+            'text' =>'required'
+        ]);
+
+        $sms = Send::create($request->only([
+            "send_to",            
+            "text"
+            
+        ]));
+
+         $sms = Outgoing::create($request->only([
+            "send_to",            
+            "text"
+
+        ]));
+      
+        return redirect()->route("sendsingle");
+    }
+
       public function storebatch(Request $request)
     {
         $this->authorize("create", Batch::class);
@@ -79,7 +116,7 @@ class SmsImportController extends Controller
     public function generate($batch)
     {
         $smsobj= new SmsImportController();
-        $imports=Importsm::where("batch_id",$batch)->get();
+        $imports=Importsm::where("batch_id",$batch)->where('status','tosend')->get();
 
          /*
         if($smsobj->closedOpenedStatusCheck($payroll_id)=="Closed")
@@ -92,6 +129,7 @@ class SmsImportController extends Controller
        // $batchd->delete();
 
         $smsobj->prepareBatchData($batch,$imports);
+        $smsobj->StoreSentBatchData($batch,$imports);
        
         return redirect()->back()->with("status", "Batch data successfully generated");
     }
@@ -108,10 +146,42 @@ class SmsImportController extends Controller
                                  'batch_id'   =>$import->batch_id,
                                  "creator_id" => auth()->id()
                                ]; 
+
+                             $smsobj->updateImport($import->id);
                        }
 
               DB::table('sends')->insert($inserts);
               return redirect()->back()->with("status", "Batch Sent Successfully!");
+    }
+
+
+
+     public function StoreSentBatchData($batch,$imports)
+    {
+        $smsobj= new SmsImportController();
+        
+
+     foreach($imports as $import) {
+                  $inserts[] = [ 'sender' => $import->sender,
+                                 'text' => $import->text,
+                                 'send_to' => $import->send_to,
+                                 'batch_id'   =>$import->batch_id,
+                                 'import_id' =>$import->id,
+                                 "creator_id" => auth()->id()
+                               ]; 
+                       }
+
+              DB::table('outgoings')->insert($inserts);
+              return redirect()->back()->with("status", "Batch Sent Successfully!");
+    }
+
+
+     public function updateImport($id)
+    {
+        $sms=Importsm::where("id",$id)->firstOrFail();
+        return $sms->update([
+            "status" =>"sent"
+            ]);
     }
     
     

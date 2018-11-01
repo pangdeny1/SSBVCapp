@@ -75,6 +75,10 @@
                         <span class="menu-text">Send bulk</span>
                     </a>
                     
+                     <a href="{{url('sendsingle')}}" class="menu-link mb-2">
+                        <i class="fas fa-plus text-muted mr-2"></i>
+                        <span class="menu-text">Send Single</span>
+                    </a>
 
                     <hr>
 

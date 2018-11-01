@@ -16,8 +16,14 @@
 
                                 <div class="col-md-6">
                                     <input id="csv_file" type="file" class="form-control" name="csv_file" required>
-                                   <input id="csv_file" type="text" class="form-control" value=22 name="batch" required>
+                                   <select name="Batch" >
+                                    @foreach(\App\Batch::All() as $batch)
+                                    {
+                                    <option value="{{$batch->number}}"> {{$batch->number}}</option>
 
+                                }
+                                @endforeach
+                                   </select>
                                     @if ($errors->has('csv_file'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('csv_file') }}</strong>

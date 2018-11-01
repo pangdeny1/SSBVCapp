@@ -19,6 +19,7 @@ class CreateImportsmsTable extends Migration
             $table->string('text');
             $table->string('sender');
             $table->integer('batch_id');
+            $table->enum("status", ["tosend", "sent"])->default("tosend");
             $table->unsignedInteger('creator_id')->nullable();
             $table->timestamps();
         });

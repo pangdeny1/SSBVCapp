@@ -34,6 +34,10 @@ Route::post('/storebatch', 'SmsImportController@storebatch')->name('storebatch')
 Route::get('/showbatch/{id}', 'SmsImportController@showBatch')->name('showbatch/{id}');
 Route::post('/generate/{id}', 'SmsImportController@generate')->name('generate/{id}');
 
+Route::get('/sendsingle', 'SmsImportController@sendsingle')->name('sendsingle');
+
+Route::post('/storesingle', 'SmsImportController@storesingle')->name('storesingle');
+
 
 Route::post("clusters/{batch}/members",   [
     "as"    => "clusters.members.store",

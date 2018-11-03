@@ -83,7 +83,8 @@ class SmsImportController extends Controller
 
         ]));
       
-        return redirect()->route("sendsingle");
+        return redirect()->route("sendsingle")->with("status", "Message Sentsuccessfully");
+    
     }
 
       public function storebatch(Request $request)

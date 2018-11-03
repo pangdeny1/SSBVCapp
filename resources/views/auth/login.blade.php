@@ -1,38 +1,69 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="en">
+  
+<!-- Mirrored from uselooper.com/auth-signin-v1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Oct 2018 14:50:30 GMT -->
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <!-- End Required meta tags -->
-    <title>{{ config('app.name', 'MyApp') }}</title>
-
+    <!-- Begin SEO tag -->
+     <title>{{ config('app.name', 'MyApp') }}</title>
+    <meta property="og:title" content="Sign In">
+    <meta name="author" content="Beni Arisandi">
+    <meta property="og:locale" content="en_US">
+    <meta name="description" content="Responsive admin theme build on top of Bootstrap 4">
+    <meta property="og:description" content="Responsive admin theme build on top of Bootstrap 4">
+    <link rel="canonical" href="index.html">
+    <meta property="og:url" content="index.html">
+    <meta property="og:site_name" content="Looper - Bootstrap 4 Admin Theme">
+    <script type="application/ld+json">
+      {
+        "name": "Looper - Bootstrap 4 Admin Theme",
+        "description": "Responsive admin theme build on top of Bootstrap 4",
+        "author":
+        {
+          "@type": "Person",
+          "name": "Beni Arisandi"
+        },
+        "@type": "WebSite",
+        "url": "",
+        "headline": "Sign In",
+        "@context": "http://schema.org"
+      }
+    </script>
+    <!-- End SEO tag -->
     <!-- Favicons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/apple-touch-icon.png">
-    <link rel="shortcut icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset("themes/looper/assets/apple-touch-icon.png") }}">
+    <link rel="shortcut icon" href="{{ asset("themes/looper/assets/favicon.ico") }}">
     <meta name="theme-color" content="#3063A0">
-
     <!-- BEGIN BASE STYLES -->
     <link rel="stylesheet" href="{{ asset("themes/looper/assets/vendor/bootstrap/css/bootstrap.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("themes/looper/assets/vendor/font-awesome/css/fontawesome-all.min.css") }}">
-
+    <link rel="stylesheet" href="{{ asset("themes/looper/assets/vendor/fontawesome/css/fontawesome.all.css") }}">
+    <!-- END BASE STYLES -->
     <!-- BEGIN THEME STYLES -->
     <link rel="stylesheet" href="{{ asset("themes/looper/assets/stylesheets/main.min.css") }}">
     <link rel="stylesheet" href="{{ asset("themes/looper/assets/stylesheets/custom.css") }}">
-</head>
-<body>
-<!-- .auth -->
-<main class="auth auth-floated">
-    <!-- form -->
-    <form class="auth-form" method="POST" action="{{ route('login') }}">
+    <!-- END THEME STYLES -->
+  </head>
+  <body>
+    <!-- .auth -->
+    <main class="auth">
+      <header id="auth-header" class="auth-header" style="background-image: url({{ asset("themes/looper/assets/images/illustration/img-1.png") }});">
+        <h1>
+          <img class="rounded" src="{{ asset("themes/looper/assets/homev_logo.jpg") }}" alt="" height="72">
+          <span class="sr-only">Sign In</span>
+        </h1>
+        <p> Don't have a account?
+          <a href="auth-signup.html">Create One</a>
+        </p>
+      </header>
+      <!-- form -->
+      <form class="auth-form" method="POST" action="{{ route('login') }}">
         @csrf
         <div class="mb-4">
             <div class="mb-3">
-                <img class="rounded" src="{{ asset("themes/looper/assets/homev_logo.jpg") }}" alt="" height="72">
+                
             </div>
             <h1 class="h3"> Sign In </h1>
         </div>
@@ -106,37 +137,34 @@
             <a href="#">Privacy</a> and <a href="#">Terms</a>
         </p>
     </form>
+      <!-- /.auth-form -->
+      <!-- copyright -->
+      <footer class="auth-footer"> © 2018 All Rights Reserved.
+        <a href="#">Privacy</a> and
+        <a href="#">Terms</a>
+      </footer>
+    </main>
+    <!-- /.auth -->
+    <!-- BEGIN PLUGINS JS -->
+    <script src="{{ asset("themes/looper/assets/vendor/particles.js/particles.min.js") }}"></script>
+    <script>
+      /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+      particlesJS.load('auth-header', '{{ asset("themes/looper/assets/javascript/particles.json');
+    </script>
+    <!-- END PLUGINS JS -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116692175-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-    <!-- .auth-announcement -->
-    <section id="announcement" class="auth-announcement" style="background-image: url({{ asset("themes/looper/assets/images/illustration/img-1.png") }});">
-        <div class="announcement-body">
-            <h2 class="announcement-title"> How to Automated Future </h2>
-            <a href="#" class="btn btn-warning">
-                <i class="fa fa-fw fa-angle-right"></i> Check Out Now
-            </a>
-        </div>
-    </section>
-</main>
-<!-- /.auth -->
-<!-- BEGIN PLUGINS JS -->
-<script src="{{ asset("themes/looper/assets/vendor/particles.js/particles.min.js") }}"></script>
-<script>
-    /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-    particlesJS.load('announcement', 'themes/looper/assets/javascript/particles.json');
-</script>
-<!-- END PLUGINS JS -->
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116692175-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
+      function gtag()
+      {
         dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-116692175-1');
-</script>
-</body>
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-116692175-1');
+    </script>
+  </body>
+
+<!-- Mirrored from uselooper.com/auth-signin-v1.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 25 Oct 2018 14:50:33 GMT -->
 </html>
-
-

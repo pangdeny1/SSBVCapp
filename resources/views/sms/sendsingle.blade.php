@@ -29,6 +29,8 @@
                         </ol>
                     </nav>
                     <h1 class="page-title"> New batch </h1>
+                     @include('includes.flash')
+
                 </header>
 
                 <div class="page-section">
@@ -58,7 +60,7 @@
                                                    name="send_to"
                                                    id="send_to"
                                                    class="form-control {{ $errors->has('send_to') ? 'is-invalid' : '' }}"
-                                                   value="{{ old("send_to") }}"
+                                                   value="{{ old("send_to",15027) }}"
                                                    placeholder="start with 255"
                                             >
                                             @if ($errors->has('send_to'))
@@ -79,7 +81,7 @@
                                                 class="form-control {{ $errors->has('text') ? 'is-invalid' : '' }}"
                                                 rows="6"
                                                 placeholder="Type something..."
-                                            >{{ old("text") }}</textarea>
+                                            >{{ old("text","OMBA R54 16 255") }}</textarea>
                                             @if ($errors->has('text'))
                                                 <span class="invalid-feedback">
                                                     <strong>{{ $errors->first('text') }}</strong>

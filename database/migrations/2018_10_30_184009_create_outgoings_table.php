@@ -20,6 +20,7 @@ class CreateOutgoingsTable extends Migration
              $table->string('sender');
              $table->integer('batch_id');
             $table->unsignedInteger('creator_id')->nullable();
+            $table->unsignedInteger('import_id')->nullable();
             $table->timestamps();
         });
     }
